@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:background="@color/black"
+    tools:context=".ui.speedometer.SpeedometerFragment"
+    android:id="@+id/fragment_speedometer">
+
+    <TextView
+        android:id="@+id/speedometer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="180sp"
+        android:textColor="@color/teal_700"
+        android:text="00" />
+
+    <TextView
+        android:id="@+id/mileage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/speedometer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Километраж: 0 km"
+        android:textColor="@color/teal_700"
+        android:textSize="20sp" />
+
+
+
+</RelativeLayout>
