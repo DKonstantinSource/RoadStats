@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_settings"
+    android:orientation="vertical"
+    tools:context=".ui.notifications.SettingsFragment">
+
+    <TextView
+        android:layout_marginTop="@dimen/margin20dp"
+        android:paddingTop="@dimen/padding16dp"
+        android:textAlignment="center"
+        android:id="@+id/settings_title"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/settings_menu"
+        android:textSize="26sp"
+        android:textColor="?attr/colorOnSecondary"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_marginTop="8dp"
+        android:id="@+id/theme_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:paddingStart="@dimen/padding16dp"
+        android:paddingEnd="@dimen/padding16dp"
+        android:textColor="?attr/colorOnSecondary"
+        android:text="@string/chose_theme"
+        android:textSize="@dimen/size18sp"
+        tools:ignore="MissingConstraints,RtlCompat,TextViewEdits,TouchTargetSizeCheck">
+    </androidx.appcompat.widget.SwitchCompat>
+
+    <TextView
+        android:layout_marginTop="@dimen/margin20dp"
+        android:paddingTop="@dimen/padding16dp"
+        android:paddingStart="@dimen/padding16dp"
+        android:textAlignment="textStart"
+        android:id="@+id/term_of_use"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/term_of_use"
+        android:textSize="@dimen/size18sp"
+        android:textColor="?attr/colorOnSecondary"
+        tools:ignore="MissingConstraints" />
+</LinearLayout>

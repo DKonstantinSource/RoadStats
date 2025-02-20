@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="fullWindow">
+        <item name="android:windowFullscreen">true</item>
+        <item name="backgroundColor">?attr/colorOnPrimary</item>
+
+    </style>
+</resources>

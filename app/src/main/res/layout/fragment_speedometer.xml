@@ -1,21 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
-    android:background="@color/black"
+    android:padding="@dimen/padding16dp"
+    style="@style/fullWindow"
     tools:context=".ui.speedometer.SpeedometerFragment"
     android:id="@+id/fragment_speedometer">
+
+
+    <Button
+        android:id="@+id/btn_save_mileage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:layout_marginEnd="@dimen/margin20dp"
+        android:text="Сохранить пробег"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/speedometer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="180sp"
+        android:textSize="200sp"
         android:textColor="@color/teal_700"
-        android:text="00" />
+        android:text="00"
+        tools:ignore="HardcodedText"
+        android:layout_below="@id/btn_save_mileage"
+        android:layout_marginTop="@dimen/margin16dp"/>
 
     <TextView
         android:id="@+id/mileage"
@@ -23,11 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/speedometer"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/margin16dp"
         android:text="Километраж: 0 km"
         android:textColor="@color/teal_700"
-        android:textSize="20sp" />
-
-
+        android:textSize="@dimen/size20sp"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

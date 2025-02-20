@@ -1,12 +1,15 @@
 package com.example.roadstats
 
 import android.Manifest
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.roadstats.Constants.Companion.LOCATION_PERMISSION_REQUEST_CODE
 import com.example.roadstats.databinding.ActivityHostBinding
 import pub.devrel.easypermissions.EasyPermissions
@@ -21,9 +24,16 @@ class HostActivity : AppCompatActivity() {
         binding = ActivityHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
 
+        binding.bottomNavigation.setupWithNavController(navController)
+
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+
+        windowInsetsController.isAppearanceLightStatusBars = resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_NO
         requestLocationPermissions()
     }
 

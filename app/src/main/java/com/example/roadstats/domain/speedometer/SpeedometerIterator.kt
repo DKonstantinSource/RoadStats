@@ -1,4 +1,4 @@
-package com.example.roadstats.domain.speedomether
+package com.example.roadstats.domain.speedometer
 
 import com.example.roadstats.data.speedomether.SpeedometerDataSource
 
