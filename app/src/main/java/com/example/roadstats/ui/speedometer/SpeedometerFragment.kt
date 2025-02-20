@@ -25,8 +25,12 @@ class SpeedometerFragment : Fragment() {
             binding.speedometer.text = "$speed"
         })
         speedometerViewModel.mileage.observe(viewLifecycleOwner, Observer { mileage ->
-            binding.mileage.text = "$mileage"
+            binding.mileage.text = "Пробег: $mileage"
         })
+
+        binding.btnSaveMileage.setOnClickListener {
+            speedometerViewModel.saveDailyMileage()
+        }
         startTracking()
         return binding.root
     }

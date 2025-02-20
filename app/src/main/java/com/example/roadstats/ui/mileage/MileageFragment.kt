@@ -4,33 +4,39 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roadstats.databinding.FragmentMileageBinding
+import com.example.roadstats.ui.mileage.adapter.MileageAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MileageFragment : Fragment() {
 
     private var _binding: FragmentMileageBinding? = null
-
     private val binding get() = _binding!!
 
+    private val mileageViewModel: MileageViewModel by viewModel()
+    private lateinit var mileageAdapter: MileageAdapter
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val mileageViewModel =
-            ViewModelProvider(this).get(MileageViewModel::class.java)
-
         _binding = FragmentMileageBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textDashboard
-        mileageViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        mileageAdapter = MileageAdapter(emptyList())
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = mileageAdapter
         }
-        return root
+
+        mileageViewModel.allMileage.observe(viewLifecycleOwner) { mileageList ->
+            mileageAdapter.updateList(mileageList)
+        }
     }
 
     override fun onDestroyView() {

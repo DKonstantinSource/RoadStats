@@ -1,13 +1,24 @@
 package com.example.roadstats.ui.mileage
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.example.roadstats.domain.mileage.GetMileageUseCase
+import com.example.roadstats.ui.mileage.modelUi.MileageUiModel
+import kotlinx.coroutines.flow.map
 
-class MileageViewModel : ViewModel() {
+class MileageViewModel(
+    getMileageUseCase: GetMileageUseCase,
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
-    }
-    val text: LiveData<String> = _text
+    val allMileage: LiveData<List<MileageUiModel>> = getMileageUseCase()
+        .map { list ->
+            list.map { mileage ->
+                MileageUiModel(
+                    date = mileage.date,
+                    distance = "${mileage.distance} км"
+                )
+            }
+        }.asLiveData()
+
 }

@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/fragment_speedometer">
+    app:startDestination="@id/navigation_speedometer">
 
     <fragment
-        android:id="@+id/fragment_speedometer"
+        android:id="@+id/navigation_speedometer"
         android:name="com.example.roadstats.ui.speedometer.SpeedometerFragment"
         android:label="Speedometer"
         tools:layout="@layout/fragment_speedometer" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_mileage"
         android:name="com.example.roadstats.ui.mileage.MileageFragment"
         android:label="Mileage"
         tools:layout="@layout/fragment_mileage" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.roadstats.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_settings"
+        android:name="com.example.roadstats.ui.notifications.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

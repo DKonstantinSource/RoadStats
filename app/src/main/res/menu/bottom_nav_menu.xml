@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_speedometer"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home"
-        app:destination="@id/fragment_speedometer" />
+        android:title="@string/title_speedometer"
+        app:destination="@id/navigation_speedometer" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_mileage"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard"
-        app:destination="@id/navigation_dashboard" />
+        android:title="@string/title_mileage"
+        app:destination="@id/navigation_mileage" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_settings"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications"
-        app:destination="@id/navigation_notifications" />
+        android:title="@string/title_settings"
+        app:destination="@id/navigation_settings" />
 </menu>
