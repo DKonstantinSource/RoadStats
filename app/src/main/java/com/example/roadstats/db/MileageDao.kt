@@ -12,9 +12,9 @@ interface MileageDao {
     @Query("SELECT * FROM mileage_table ORDER BY date DESC")
     fun getAllMileage(): Flow<List<Mileage>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertMileage(mileage: Mileage)
-
     @Query("SELECT * FROM mileage_table WHERE date = :date")
-    suspend fun getAllMileageForDate(date: String): List<Mileage>
+    suspend fun getMileageForDate(date: String): Mileage?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMileage(mileage: Mileage)
 }

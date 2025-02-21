@@ -14,17 +14,11 @@ class MileageRepository(private val mileageDao: MileageDao) {
     suspend fun insertMileage(distance: Float) {
         val currentDate = SimpleDateFormat(INSERT_DATE_FORMAT, Locale.getDefault()).format(Date())
 
+        val existingMileage = mileageDao.getMileageForDate(currentDate)
 
-        val existingMileages = mileageDao.getAllMileageForDate(currentDate)
+        val totalDistance = (existingMileage?.distance ?: 0f) + distance
+        val mileage = Mileage(date = currentDate, distance = totalDistance)
 
-
-        if (existingMileages.isNotEmpty()) {
-            val totalDistance = existingMileages.fold(0f) { acc, mileage -> acc + mileage.distance } + distance
-            val mileage = Mileage(date = currentDate, distance = totalDistance)
-            mileageDao.insertMileage(mileage)
-        } else {
-            val mileage = Mileage(date = currentDate, distance = distance)
-            mileageDao.insertMileage(mileage)
-        }
+        mileageDao.insertMileage(mileage)
     }
 }

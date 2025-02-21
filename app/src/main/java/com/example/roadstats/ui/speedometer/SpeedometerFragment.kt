@@ -31,13 +31,10 @@ class SpeedometerFragment : Fragment() {
         binding.btnSaveMileage.setOnClickListener {
             speedometerViewModel.saveDailyMileage()
         }
-        startTracking()
+        speedometerViewModel.startSpeedTracking()
         return binding.root
     }
 
-    private fun startTracking() {
-        speedometerViewModel.startSpeedTracking()
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
