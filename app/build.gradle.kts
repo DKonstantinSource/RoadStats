@@ -41,7 +41,7 @@ android {
 
 dependencies {
     implementation (libs.play.services.location)
-
+    implementation ("com.google.android.material:material:1.9.0")
 
     implementation (libs.easypermissions)
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
