@@ -22,14 +22,18 @@ class SpeedometerViewModel(
     val mileage: LiveData<Float> get() = _mileage
 
     private var totalMileage: Float = 0f
+    private var isTracking = false
 
     fun startSpeedTracking() {
+        if (isTracking) return
+        isTracking = true
+
         viewModelScope.launch {
-            while (true) {
+            while (isTracking) {
                 val currentSpeed = speedometerUseCase.getCurrentSpeed().roundToInt()
                 _speed.postValue(currentSpeed)
 
-                if (currentSpeed >= 2.2) {
+                if (currentSpeed >= 0.5) {
                     val distance = currentSpeed * (850f / 3_600_000f)
                     totalMileage += distance
                     _mileage.postValue(totalMileage.roundToOneDecimal())
@@ -42,8 +46,15 @@ class SpeedometerViewModel(
 
     fun saveDailyMileage() {
         viewModelScope.launch {
-            saveMileageUseCase(totalMileage)
-            totalMileage = 0f
+            try {
+                if (totalMileage > 0) {
+                    saveMileageUseCase(totalMileage)
+                    totalMileage = 0f
+                    _mileage.postValue(totalMileage)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
